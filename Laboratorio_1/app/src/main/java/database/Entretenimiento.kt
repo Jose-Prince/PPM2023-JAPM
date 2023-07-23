@@ -1,4 +1,4 @@
-package com.example.anylist
+package database
 
 abstract class Entretenimiento {
     abstract var nombre : String
