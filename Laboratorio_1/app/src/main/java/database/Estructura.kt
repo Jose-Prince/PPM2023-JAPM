@@ -22,28 +22,28 @@ class Estructura : IEstructura{
     }
 
     override fun showEntretenimiento() : String {
-        var display1 : String? = null
-        var display2 : String? = null
-        var display3 : String? = null
-        var display4 : String? = null
+        var display1 : String? = ""
+        var display2 : String? = ""
+        var display3 : String? = ""
+        var display4 : String? = ""
         var pelis : String = "\nPeliculas: "
         for (elemento in lista){
             if (elemento is Pelicula) {
-                display1 = "\n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor} " +
+                display1 = "$display1 \n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor} " +
                         "\nGénero: ${elemento.genre} \nEstado: ${elemento.estado} \nDuración: ${elemento.duracion} min"
             }
         }
         var mangas : String = "\n\nMangas: "
         for (elemento in lista){
             if (elemento is Manga){
-                display2 = "\n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor}" +
+                display2 = "$display2 \n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor}" +
                         "\nGénero: ${elemento.genre} \nEstado: ${elemento.estado} \nCapítulos: ${elemento.caps}"
             }
         }
         var animes : String = "\n\nAnimes: "
         for (elemento in lista){
             if (elemento is Anime){
-                display3 = "\n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor}" +
+                display3 = "$display3 \n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor}" +
                         "\nGénero: ${elemento.genre} \nEstado: ${elemento.estado} " +
                         "\nCapítulos: ${elemento.caps} \nEstudio: ${elemento.estudio}"
             }
@@ -51,7 +51,7 @@ class Estructura : IEstructura{
         var libros : String = "\n\nLibros: "
         for (elemento in lista){
             if (elemento is Libro){
-                display4 = "\n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor}" +
+                display4 = "$display4 \n\nNombre: ${elemento.nombre} \nAutor: ${elemento.autor}" +
                         "\nGénero: ${elemento.genre} \nEstado: ${elemento.estado} " +
                         "\nPáginas: ${elemento.pags} \nEditorial: ${elemento.editorial}"
             }

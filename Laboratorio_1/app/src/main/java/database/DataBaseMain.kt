@@ -46,43 +46,43 @@ fun main() {
                 var type = reader.nextLine()
 
                 if (type.equals("Pelicula")){
-                    print("Duracion: ")
 
                     prueba = true
                     while (prueba) {
+                        print("Duración: ")
                         try {
                             duration = reader.nextInt()
                             reader.nextLine()
                             prueba = false
                         } catch (e: Exception){
-                            println("DURACION INVALIDA")
+                            println("DURACIÓN INVÁLIDA")
                             reader.nextLine()
                         }
                     }
 
                 } else if (type.equals("Manga")){
-                    print("Número de capítulos: ")
                     prueba = true
                     while (prueba) {
+                        print("Número de capítulos: ")
                         try {
                             chapter = reader.nextInt()
                             reader.nextLine()
                             prueba = false
                         } catch (e: Exception) {
-                            println("DURACION INVALIDA")
+                            println("CAPITULOS INVÁLIDOS")
                             reader.nextLine()
                         }
                     }
                 } else if (type.equals("Anime")){
-                    print("Número de capítulos: ")
                     prueba = true
                     while (prueba) {
+                        print("Número de capítulos: ")
                         try {
                             chapter = reader.nextInt()
                             reader.nextLine()
                             prueba = false
                         } catch (e: Exception) {
-                            println("DURACION INVALIDA")
+                            println("CAPITULOS INVÁLIDOS")
                             reader.nextLine()
                         }
                     }
@@ -107,7 +107,7 @@ fun main() {
 
                 structure.addEntretenimiento(name,type,author,genre,duration,state,chapter,studio,pages,editorial)
             } else if (opcion == 2) {
-                println(structure.printEntretenimiento());
+                println(structure.showEntretenimiento());
             } else if (opcion == 3) {
                 print("\nNombre: ")
                 var name: String = reader.nextLine()
