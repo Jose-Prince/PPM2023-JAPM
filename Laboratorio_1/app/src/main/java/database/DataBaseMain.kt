@@ -33,25 +33,25 @@ fun main() {
                 print("\nNombre: ")
                 var name = reader.nextLine()
 
-                print("\nAutor: ")
+                print("Autor: ")
                 var author = reader.nextLine()
 
-                print("\nGenero: ")
+                print("Generos: ")
                 var genre = reader.nextLine()
 
-                print("\nEstado: ")
+                print("Estado: ")
                 var state = reader.nextLine()
 
-                print("\nTipo (Pelicula,Manga,etc): ")
+                print("Tipo (Pelicula,Manga,etc): ")
                 var type = reader.nextLine()
 
                 if (type.equals("Pelicula")){
-                    print("\nDuracion: ")
+                    print("Duracion: ")
 
                     prueba = true
                     while (prueba) {
                         try {
-                            var duration = reader.nextInt()
+                            duration = reader.nextInt()
                             reader.nextLine()
                             prueba = false
                         } catch (e: Exception){
@@ -61,7 +61,7 @@ fun main() {
                     }
 
                 } else if (type.equals("Manga")){
-                    print("\nNúmero de capítulos: ")
+                    print("Número de capítulos: ")
                     prueba = true
                     while (prueba) {
                         try {
@@ -74,7 +74,7 @@ fun main() {
                         }
                     }
                 } else if (type.equals("Anime")){
-                    print("\nNúmero de capítulos: ")
+                    print("Número de capítulos: ")
                     prueba = true
                     while (prueba) {
                         try {
@@ -86,10 +86,10 @@ fun main() {
                             reader.nextLine()
                         }
                     }
-                    print("\nEstudio: ")
+                    print("Estudio: ")
                     studio = reader.nextLine()
                 } else if (type.equals("Libro")){
-                    print("\nNúmero de páginas: ")
+                    print("Número de páginas: ")
                     prueba = true
                     while (prueba) {
                         try {
@@ -101,13 +101,13 @@ fun main() {
                             reader.nextLine()
                         }
                     }
-                    print("\nEditorial: ")
+                    print("Editorial: ")
                     editorial = reader.nextLine()
                 }
 
                 structure.addEntretenimiento(name,type,author,genre,duration,state,chapter,studio,pages,editorial)
             } else if (opcion == 2) {
-
+                println(structure.printEntretenimiento());
             } else if (opcion == 3) {
 
             } else if (opcion == 4) {
