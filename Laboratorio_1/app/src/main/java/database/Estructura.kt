@@ -7,16 +7,16 @@ class Estructura {
         nombre: String, tipoEntretenimiento: String, autor: String,
         genero: String, duracion: Int?, estado: String, caps: Int?,
         estudio: String?, pags: Int?, editorial: String? ) {
-        if (tipoEntretenimiento.equals("Pelicula")) {
+        if (tipoEntretenimiento.lowercase().equals("pelicula")) {
             var newPeli: Entretenimiento = Pelicula(nombre, autor, genero, estado, duracion)
             lista.add(newPeli)
-        } else if (tipoEntretenimiento.equals("manga")) {
+        } else if (tipoEntretenimiento.lowercase().equals("manga")) {
             var newManga: Entretenimiento = Manga(nombre, autor, genero, estado, caps)
             lista.add(newManga)
-        } else if (tipoEntretenimiento.equals("anime")) {
+        } else if (tipoEntretenimiento.lowercase().equals("anime")) {
             var newAnime: Entretenimiento = Anime(nombre, autor, genero, estado, caps, estudio)
             lista.add(newAnime)
-        } else if (tipoEntretenimiento.equals("libro")) {
+        } else if (tipoEntretenimiento.lowercase().equals("libro")) {
             var newLibro: Entretenimiento = Libro(nombre, autor, genero, estado, pags, editorial)
             lista.add(newLibro)
         }
@@ -60,7 +60,12 @@ class Estructura {
         return pelis + display1 + mangas + display2 + animes + display3 + libros + display4
     }
 
-    fun modEstado() {
-
+    fun modEstado(nombre: String, estado: String) {
+        for (elemento in lista){
+            var nombreC : String = elemento.nombre
+            if (nombre.lowercase().trim().equals(nombreC)){
+                elemento.estado = estado
+            }
+        }
     }
 }

@@ -65,7 +65,7 @@ fun main() {
                     prueba = true
                     while (prueba) {
                         try {
-                            var chapter = reader.nextInt()
+                            chapter = reader.nextInt()
                             reader.nextLine()
                             prueba = false
                         } catch (e: Exception) {
@@ -78,7 +78,7 @@ fun main() {
                     prueba = true
                     while (prueba) {
                         try {
-                            var chapter = reader.nextInt()
+                            chapter = reader.nextInt()
                             reader.nextLine()
                             prueba = false
                         } catch (e: Exception) {
@@ -93,7 +93,7 @@ fun main() {
                     prueba = true
                     while (prueba) {
                         try {
-                            var pages = reader.nextInt()
+                            pages = reader.nextInt()
                             reader.nextLine()
                             prueba = false
                         } catch (e: Exception) {
@@ -109,7 +109,11 @@ fun main() {
             } else if (opcion == 2) {
                 println(structure.printEntretenimiento());
             } else if (opcion == 3) {
-
+                print("\nNombre: ")
+                var name: String = reader.nextLine()
+                print("Nuevo Estado: ")
+                var newEstado : String = reader.nextLine()
+                structure.modEstado(name,newEstado)
             } else if (opcion == 4) {
                 println("\nSaliendo del programa...")
                 ejecucion = false
