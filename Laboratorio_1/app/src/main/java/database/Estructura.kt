@@ -1,12 +1,11 @@
 package database
 
-class Estructura {
-    var lista: ArrayList<Entretenimiento> = ArrayList<Entretenimiento>(1)
+class Estructura : IEstructura{
+    var lista: ArrayList<Entretenimiento> = ArrayList<Entretenimiento>()
 
-    fun addEntretenimiento(
-        nombre: String, tipoEntretenimiento: String, autor: String,
-        genero: String, duracion: Int?, estado: String, caps: Int?,
-        estudio: String?, pags: Int?, editorial: String? ) {
+    override fun addEntretenimiento(nombre: String, tipoEntretenimiento: String, autor: String,
+                                    genero: String, duracion: Int?, estado: String, caps: Int?,
+                                    estudio: String?, pags: Int?, editorial: String?) {
         if (tipoEntretenimiento.lowercase().equals("pelicula")) {
             var newPeli: Entretenimiento = Pelicula(nombre, autor, genero, estado, duracion)
             lista.add(newPeli)
@@ -22,7 +21,7 @@ class Estructura {
         }
     }
 
-    fun printEntretenimiento() : String {
+    override fun showEntretenimiento() : String {
         var display1 : String? = null
         var display2 : String? = null
         var display3 : String? = null
@@ -60,7 +59,7 @@ class Estructura {
         return pelis + display1 + mangas + display2 + animes + display3 + libros + display4
     }
 
-    fun modEstado(nombre: String, estado: String) {
+    override fun modEstado(nombre: String, estado: String) {
         for (elemento in lista){
             var nombreC : String = elemento.nombre
             if (nombre.lowercase().trim().equals(nombreC)){
