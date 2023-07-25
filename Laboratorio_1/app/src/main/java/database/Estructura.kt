@@ -1,5 +1,12 @@
 package database
 
+import android.content.Context
+import android.content.SharedPreferences
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
+
 class Estructura : IEstructura{
     var lista: ArrayList<Entretenimiento> = ArrayList<Entretenimiento>()
 
@@ -67,4 +74,5 @@ class Estructura : IEstructura{
             }
         }
     }
+
 }

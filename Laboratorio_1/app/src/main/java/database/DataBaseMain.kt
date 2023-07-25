@@ -17,6 +17,8 @@ fun main() {
     var pages : Int? = null
     var editorial : String? = null
 
+    println("Bienvenido al programa: ")
+
     while(ejecucion){
         println("\n1: Añadir Película/Anime/Manga/Libro" +
                 "\n2: Mostrar la base de datos" +
