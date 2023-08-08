@@ -10,11 +10,13 @@ fun processList(lista: List<Any?>) {
     for (elemento in lista){
         if (elemento is String){
             println(elemento)
+            println("originalPos=${lista.indexOf(elemento)}")
             println("type=cadena")
             var size: Int = elemento.length
             println("info=L$size\n")
         } else if (elemento is Int){
             println(elemento)
+            println("originalPos=${lista.indexOf(elemento)}")
             println("type=entero")
             if (elemento % 10 == 0){
                 println("info=M10\n")
@@ -27,6 +29,7 @@ fun processList(lista: List<Any?>) {
             }
         } else if (elemento is Boolean){
             println(elemento)
+            println("originalPos=${lista.indexOf(elemento)}")
             println("type=booleano")
             if (elemento == true){
                 println("info=Verdadero\n")
@@ -37,6 +40,7 @@ fun processList(lista: List<Any?>) {
 
         }else {
             println(elemento)
+            println("originalPos=${lista.indexOf(elemento)}")
             println("type=null")
             println("info=null\n")
 
