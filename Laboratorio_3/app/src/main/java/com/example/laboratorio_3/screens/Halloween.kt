@@ -65,10 +65,10 @@ fun PantallaPrincipal() {
     val scope = rememberCoroutineScope()
 
     val navigation_item = listOf(
-        Pantalla1,
-        Pantalla2,
-        Pantalla3,
-        Pantalla4
+        Pantalla1H,
+        Pantalla2H,
+        Pantalla3H,
+        Pantalla4H
     )
 
     Scaffold(

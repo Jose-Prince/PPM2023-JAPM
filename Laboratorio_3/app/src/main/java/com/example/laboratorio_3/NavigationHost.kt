@@ -14,18 +14,18 @@ import com.example.laboratorio_3.screens.FragmentsHalloween.Diseño4
 @Composable
 fun NavigationHost(navController: NavHostController){
     NavHost(navController = navController,
-        startDestination = Pantalla1.ruta,
+        startDestination = Pantalla1H.ruta,
         ){
-        composable (Pantalla1.ruta){
+        composable (Pantalla1H.ruta){
             Diseño1()
         }
-        composable (Pantalla2.ruta){
+        composable (Pantalla2H.ruta){
             Diseño2()
         }
-        composable (Pantalla3.ruta){
+        composable (Pantalla3H.ruta){
             Diseño3()
         }
-        composable (Pantalla4.ruta){
+        composable (Pantalla4H.ruta){
             Diseño4()
         }
     }
