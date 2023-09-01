@@ -28,7 +28,7 @@ import com.example.laboratorio_3.R
 fun Diseño7() {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.anniversario3),
+            painter = painterResource(id = R.drawable.aniversario3),
             contentDescription = null
         )
         Spacer(modifier = Modifier.height(64.dp))

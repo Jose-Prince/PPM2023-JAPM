@@ -25,10 +25,10 @@ import androidx.compose.ui.unit.sp
 import com.example.laboratorio_3.R
 
 @Composable
-fun Diseño5() {
+fun Diseño6() {
     Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            painter = painterResource(id = R.drawable.anniversario2),
+            painter = painterResource(id = R.drawable.aniversario2),
             contentDescription = null
         )
         Spacer(modifier = Modifier.height(64.dp))

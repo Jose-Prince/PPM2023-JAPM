@@ -7,6 +7,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
 import com.example.laboratorio_3.Items_menu.*
+import com.example.laboratorio_3.screens.FragmentsAniversary.Diseño5
+import com.example.laboratorio_3.screens.FragmentsAniversary.Diseño6
+import com.example.laboratorio_3.screens.FragmentsAniversary.Diseño7
+import com.example.laboratorio_3.screens.FragmentsAniversary.Diseño8
+import com.example.laboratorio_3.screens.FragmentsBirthday.Diseño10
+import com.example.laboratorio_3.screens.FragmentsBirthday.Diseño11
+import com.example.laboratorio_3.screens.FragmentsBirthday.Diseño12
+import com.example.laboratorio_3.screens.FragmentsBirthday.Diseño9
 import com.example.laboratorio_3.screens.FragmentsHalloween.Diseño1
 import com.example.laboratorio_3.screens.FragmentsHalloween.Diseño2
 import com.example.laboratorio_3.screens.FragmentsHalloween.Diseño3
@@ -35,6 +43,32 @@ fun NavigationHost(navController: NavHostController){
         }
         composable (Pantalla4.ruta){
             Diseño4()
+        }
+
+        composable (Pantalla5.ruta){
+            Diseño5()
+        }
+        composable (Pantalla6.ruta){
+            Diseño6()
+        }
+        composable (Pantalla7.ruta){
+            Diseño7()
+        }
+        composable (Pantalla8.ruta){
+            Diseño8()
+        }
+
+        composable (Pantalla9.ruta){
+            Diseño9()
+        }
+        composable (Pantalla10.ruta){
+            Diseño10()
+        }
+        composable (Pantalla11.ruta){
+            Diseño11()
+        }
+        composable (Pantalla12.ruta){
+            Diseño12()
         }
 
         composable (Pantalla18.ruta){
