@@ -14,6 +14,24 @@ sealed class Items_menu(
     object Pantalla4: Items_menu(R.drawable.baseline_filter_4_24,
         "Diseño4", "pantalla4")
 
+    object Pantalla5: Items_menu(R.drawable.baseline_filter_1_24,
+        "Diseño5", "pantalla5")
+    object Pantalla6: Items_menu(R.drawable.baseline_filter_2_24,
+        "Diseño6", "pantalla6")
+    object Pantalla7: Items_menu(R.drawable.baseline_filter_3_24,
+        "Diseño7", "pantalla7")
+    object Pantalla8: Items_menu(R.drawable.baseline_filter_4_24,
+        "Diseño8", "pantalla8")
+
+    object Pantalla9: Items_menu(R.drawable.baseline_filter_1_24,
+        "Diseño9", "pantalla9")
+    object Pantalla10: Items_menu(R.drawable.baseline_filter_2_24,
+        "Diseño10", "pantalla10")
+    object Pantalla11: Items_menu(R.drawable.baseline_filter_3_24,
+        "Diseño11", "pantalla11")
+    object Pantalla12: Items_menu(R.drawable.baseline_filter_4_24,
+        "Diseño12", "pantalla12")
+
     object Pantalla18: Items_menu(R.drawable.baseline_filter_1_24,
         "Diseño18", "pantalla18")
     object Pantalla19: Items_menu(R.drawable.baseline_filter_2_24,
