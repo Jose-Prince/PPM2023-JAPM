@@ -45,12 +45,12 @@ sealed class Items_menu(
 
 
     object Pantalla22: Items_menu(R.drawable.baseline_filter_1_24,
-        "Diseño18", "pantalla18")
+        "Diseño22", "pantalla22")
     object Pantalla23: Items_menu(R.drawable.baseline_filter_2_24,
-        "Diseño19", "pantalla19")
+        "Diseño23", "pantalla23")
     object Pantalla24: Items_menu(R.drawable.baseline_filter_3_24,
-        "Diseño20", "pantalla20")
+        "Diseño24", "pantalla24")
     object Pantalla25: Items_menu(R.drawable.baseline_filter_4_24,
-        "Diseño21", "pantalla21")
+        "Diseño25", "pantalla25")
 
 }

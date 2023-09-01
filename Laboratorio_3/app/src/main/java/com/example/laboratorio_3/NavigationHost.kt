@@ -32,7 +32,9 @@ fun NavigationHost(navController: NavHostController){
     NavHost(navController = navController,
         startDestination = Principal.ruta,
         ){
-
+        composable (Principal.ruta){
+            Principal
+        }
         composable (Pantalla1.ruta){
             Diseño1()
         }

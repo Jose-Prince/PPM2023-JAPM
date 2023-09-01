@@ -56,7 +56,6 @@ fun PreviewDiseño19() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun TextFieldNameX2() {
     var text by remember { mutableStateOf("") }

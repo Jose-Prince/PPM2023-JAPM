@@ -46,7 +46,7 @@ class Mother : ComponentActivity() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.fillMaxSize()
             ) {
-                Run()
+                Runmothr()
             }
         }
     }
@@ -55,7 +55,7 @@ class Mother : ComponentActivity() {
 @Preview
 @Composable
 fun MesssageMPreview(showBackground: Boolean = true) {
-    Run()
+    Runmothr()
 }
 
 
@@ -74,60 +74,64 @@ fun PantallaPrincipalMother() {
     )
 
     Scaffold(
-        bottomBar = { NavegacionInferior(navController = navController, menu_items = navigation_item)}
+        bottomBar = { NavegacionInferiormotherr(navController = navController, menu_items = navigation_item)}
     ) {
         NavigationHost(navController)
     }
 
-    @Composable
-    fun currentRoute(navController: NavHostController): String? {
-        val entrada by navController.currentBackStackEntryAsState()
-        return entrada?.destination?.route
-    }
 
-    @Composable
-    fun NavegacionInferior(
-        navController : NavHostController,
-        menu_items : List<Items_menu>
-    ){
-        BottomAppBar {
-            BottomNavigation {
-                val currentRoute = currentRoute(navController = navController)
-                menu_items.forEach { item ->
-                    BottomNavigationItem(
-                        selected = currentRoute == item.ruta,
-                        onClick = { navController.navigate(item.ruta) },
-                        icon = { Icon(
-                            painter = painterResource(id = item.icon),
-                            contentDescription = item.title) })
-                }
+
+
+
+
+
+
+
+
+}
+
+
+@Composable
+fun Runmothr(){
+    val context = LocalContext.current
+    Box(modifier = Modifier.fillMaxSize()) {
+        PantallaPrincipalMother()
+
+        Box(){
+            IconButton(onClick = {val intent = Intent(context, MainActivity::class.java)
+                context.startActivity(intent)},
+                modifier = Modifier.size(60.dp)) {
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_24),
+                    contentDescription = "",
+                    modifier = Modifier.size(60.dp))
             }
         }
     }
+}
 
-    @Composable
-    fun Run(){
-        val context = LocalContext.current
-        Box(modifier = Modifier.fillMaxSize()) {
-            PantallaPrincipal()
-
-            Box(){
-                IconButton(onClick = {val intent = Intent(context, MainActivity::class.java)
-                    context.startActivity(intent)},
-                    modifier = Modifier.size(60.dp)) {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_24),
-                        contentDescription = "",
-                        modifier = Modifier.size(60.dp))
-                }
+@Composable
+fun NavegacionInferiormotherr(
+    navController : NavHostController,
+    menu_items : List<Items_menu>
+){
+    BottomAppBar {
+        BottomNavigation {
+            val currentRoute = currentRoutemother(navController = navController)
+            menu_items.forEach { item ->
+                BottomNavigationItem(
+                    selected = currentRoute == item.ruta,
+                    onClick = { navController.navigate(item.ruta) },
+                    icon = { Icon(
+                        painter = painterResource(id = item.icon),
+                        contentDescription = item.title) })
             }
         }
     }
+}
 
-
-
-
-
-
-
+@Composable
+fun currentRoutemother(navController: NavHostController): String? {
+    val entrada by navController.currentBackStackEntryAsState()
+    return entrada?.destination?.route
 }
