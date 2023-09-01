@@ -124,10 +124,17 @@ fun Run(){
                 androidx.compose.material3.Icon(
                     imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_24),
                     contentDescription = "",
-                    modifier = Modifier.size(60.dp))
+                    modifier = Modifier.size(60.dp),
+                    tint = Color.White)
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun RunPreview() {
+    Run()
 }
 
 
