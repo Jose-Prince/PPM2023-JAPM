@@ -1,5 +1,6 @@
 package com.example.laboratorio_3
 
+import Diseño22
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -14,7 +15,6 @@ import com.example.laboratorio_3.screens.FragmentsMother.Diseño18
 import com.example.laboratorio_3.screens.FragmentsMother.Diseño19
 import com.example.laboratorio_3.screens.FragmentsMother.Diseño20
 import com.example.laboratorio_3.screens.FragmentsMother.Diseño21
-import com.example.laboratorio_3.screens.FragmentsXmas.Diseño22
 import com.example.laboratorio_3.screens.FragmentsXmas.Diseño23
 import com.example.laboratorio_3.screens.FragmentsXmas.Diseño24
 import com.example.laboratorio_3.screens.FragmentsXmas.Diseño25
