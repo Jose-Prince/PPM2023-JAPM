@@ -30,8 +30,9 @@ import com.example.laboratorio_3.screens.FragmentsXmas.Diseño25
 @Composable
 fun NavigationHost(navController: NavHostController){
     NavHost(navController = navController,
-        startDestination = Pantalla1.ruta,
+        startDestination = Principal.ruta,
         ){
+
         composable (Pantalla1.ruta){
             Diseño1()
         }

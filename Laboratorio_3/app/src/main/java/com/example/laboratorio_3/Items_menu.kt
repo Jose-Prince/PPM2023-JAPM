@@ -5,6 +5,8 @@ sealed class Items_menu(
     val title: String,
     val ruta: String
 ){
+    object Principal: Items_menu(R.drawable.baseline_filter_1_24,
+        "Principal", "Principal")
     object Pantalla1: Items_menu(R.drawable.baseline_filter_1_24,
         "Diseño1", "pantalla1")
     object Pantalla2: Items_menu(R.drawable.baseline_filter_2_24,
