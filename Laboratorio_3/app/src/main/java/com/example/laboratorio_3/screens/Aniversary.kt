@@ -75,7 +75,7 @@ fun PantallaPrincipalAniversary() {
 }
 
 @Composable
-fun currentRouteAnyversary(navController: NavHostController): String? {
+fun currentRouteAniversary(navController: NavHostController): String? {
     val entrada by navController.currentBackStackEntryAsState()
     return entrada?.destination?.route
 }
@@ -87,7 +87,7 @@ fun NavegacionInferiorAniversary(
 ){
     BottomAppBar {
         BottomNavigation {
-            val currentRoute = currentRouteAnyversary(navController = navController)
+            val currentRoute = currentRouteAniversary(navController = navController)
             menu_items.forEach { item ->
                 BottomNavigationItem(
                     selected = currentRoute == item.ruta,

@@ -112,7 +112,7 @@ fun MesssageBPreview() {
 fun RunBirthday(){
     val context = LocalContext.current
     Box(modifier = Modifier.fillMaxSize()) {
-        PantallaPrincipalAniversary()
+        PantallaPrincipalBirthday()
 
         Box(){
             IconButton(onClick = {val intent = Intent(context, MainActivity::class.java)
