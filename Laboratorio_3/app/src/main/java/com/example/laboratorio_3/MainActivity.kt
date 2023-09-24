@@ -157,11 +157,3 @@ fun Spinner(list : List<String>,
         )
     }
 }
-
-@Composable
-fun NavigationButton(selectedItem: String,onClick: () -> Unit) {
-    Button(onClick = onClick) {
-        Text(text = "Generar")
-    }
-}
-
