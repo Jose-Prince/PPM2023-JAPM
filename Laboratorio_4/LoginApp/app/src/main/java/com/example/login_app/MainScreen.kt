@@ -23,7 +23,7 @@ class MainScreen : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     var navController = rememberNavController()
-                    LogInScreen(navController)
+
                 }
             }
         }

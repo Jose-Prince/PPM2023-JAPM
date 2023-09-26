@@ -55,8 +55,10 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.login_app.ui.theme.Login_AppTheme
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : ComponentActivity() {
+    private val auth : FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -67,7 +69,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     var navController = rememberNavController()
-                    LogInScreen(navController)
+                    LogInScreen(auth, navController)
                 }
             }
         }
@@ -76,10 +78,10 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LogInScreen(navController: NavController) {
+fun LogInScreen(auth : FirebaseAuth, navController: NavController) {
 
     var context = LocalContext.current
-    var usuario = ""
+    var email = ""
     var password = ""
     var maxCharacters : Int = 36
     Box (
@@ -97,12 +99,12 @@ fun LogInScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(125.dp))
 
         Text(
-            text = "Usuario:",
+            text = "Correo Electrónico:",
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth())
         Row {
             Spacer(modifier = Modifier.width(55.dp))
-            usuario = FieldString()
+            email = FieldString()
         }
         Spacer(modifier = Modifier.height(50.dp))
         Text(
@@ -117,7 +119,7 @@ fun LogInScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(70.dp))
         Row {
             Spacer(modifier = Modifier.width(113.dp))
-            Button(onClick = {validarUsuario(URL = "https://localhost/LoginExample/php/public/", usuario = usuario, password = password, context)},
+            Button(onClick = { login(auth,email,password, context)},
                 colors = ButtonDefaults.buttonColors(Color.Green)
             ) {
                 Text(text = "Iniciar sesión",
@@ -147,10 +149,11 @@ fun LogInScreen(navController: NavController) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun LogInPreview() {
     Login_AppTheme {
         var navController = rememberNavController()
-        LogInScreen(navController)
+        val fakeAuth = FirebaseAuth.getInstance()
+        LogInScreen(fakeAuth, navController)
     }
 }
 
@@ -168,38 +171,6 @@ fun DrawShape(
             .clip(shape)
             .background(Color.Blue))
     }
-}
-
-
-private fun validarUsuario(URL: String, usuario : String, password : String, context : Context) {
-
-    // Crear la solicitud POST con los parámetros
-    val stringRequest = object : StringRequest(
-        Request.Method.POST, // Método HTTP POST
-        URL, // URL a la que deseas enviar la solicitud
-        Response.Listener<String> { response ->
-            if (!response.isEmpty()) {
-                val intent = Intent(context, MainScreen::class.java)
-                context.startActivity(intent)
-            } else {
-                Toast.makeText(context, "Usuario o contraseña incorrecta", Toast.LENGTH_SHORT).show()
-            }
-        },
-        Response.ErrorListener { error ->
-            Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
-        }
-    ) {
-        // Aquí puedes agregar los parámetros a la solicitud
-        override fun getParams(): MutableMap<String, String> {
-            var params = HashMap<String, String>()
-            params["usuario"] = usuario
-            params["password"] = password
-            return params
-        }
-    }
-
-    val requestQueue = Volley.newRequestQueue(context)
-    requestQueue.add(stringRequest)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -225,3 +196,30 @@ fun FieldString() : String {
     return text
 }
 
+private fun login(auth: FirebaseAuth, email : String, password: String, context: Context) {
+    if  (email.isBlank() || password.isBlank()) {
+        Toast.makeText(context, "Correo o contraseña vacios", Toast.LENGTH_SHORT).show()
+        return
+
+    }
+    auth.signInWithEmailAndPassword(email, password)
+        .addOnCompleteListener { signInTask ->
+            if (signInTask.isSuccessful) {
+                Toast.makeText(context, "Sesion iniciada", Toast.LENGTH_SHORT).show()
+            } else {
+                auth.fetchSignInMethodsForEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful){
+                            val result = task.result
+                            if (result.equals(email)){
+                                Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, "Correo no registrado", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            Toast.makeText(context, "Error en la verificación del correo", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            }
+        }
+}
