@@ -166,6 +166,8 @@ fun signUpUser(auth: FirebaseAuth, email: String, password : String, confirmatio
         .addOnCompleteListener{ task ->
             if (task.isSuccessful) {
                 Toast.makeText(context, "Usuario Registrado", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, MainScreen::class.java)
+                context.startActivity(intent)
             } else {
                 Toast.makeText(context, "Registro fallido", Toast.LENGTH_SHORT).show()
             }

@@ -68,6 +68,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val currentUser = auth.currentUser
+
+                    if (currentUser != null){
+                        var context = LocalContext.current
+                        val intent = Intent(context, MainScreen::class.java)
+                        context.startActivity(intent)
+                    }
+
                     var navController = rememberNavController()
                     LogInScreen(auth, navController)
                 }
@@ -83,7 +91,6 @@ fun LogInScreen(auth : FirebaseAuth, navController: NavController) {
     var context = LocalContext.current
     var email = ""
     var password = ""
-    var maxCharacters : Int = 36
     Box (
         modifier = Modifier
             .fillMaxSize()
@@ -206,18 +213,20 @@ private fun login(auth: FirebaseAuth, email : String, password: String, context:
         .addOnCompleteListener { signInTask ->
             if (signInTask.isSuccessful) {
                 Toast.makeText(context, "Sesion iniciada", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, MainScreen::class.java)
+                context.startActivity(intent)
             } else {
                 auth.fetchSignInMethodsForEmail(email)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
                             val result = task.result
                             if (result.equals(email)){
-                                Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Credenciales inválidas", Toast.LENGTH_SHORT).show()
                             } else {
-                                Toast.makeText(context, "Correo no registrado", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Credenciales inválidas", Toast.LENGTH_SHORT).show()
                             }
                         } else {
-                            Toast.makeText(context, "Error en la verificación del correo", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Correo inválido", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
