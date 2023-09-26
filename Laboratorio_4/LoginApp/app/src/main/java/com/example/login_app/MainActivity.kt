@@ -2,6 +2,8 @@ package com.example.login_app
 
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -226,9 +228,21 @@ private fun login(auth: FirebaseAuth, email : String, password: String, context:
                                 Toast.makeText(context, "Credenciales inválidas", Toast.LENGTH_SHORT).show()
                             }
                         } else {
-                            Toast.makeText(context, "Correo inválido", Toast.LENGTH_SHORT).show()
+                            if (isInternetAvailable(context)) {
+                                Toast.makeText(context, "Correo inválido", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, "Sin Internet", Toast.LENGTH_SHORT).show()
+                            }
+
                         }
                     }
             }
         }
+}
+
+fun isInternetAvailable(context: Context) : Boolean {
+    val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val network = connectivityManager.activeNetwork
+    val capabilities = connectivityManager.getNetworkCapabilities(network)
+    return capabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
 }
