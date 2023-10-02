@@ -66,4 +66,17 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation("com.google.oauth-client:google-oauth-client-jetty:1.23.0")
+    implementation("com.google.apis:google-api-services-calendar:v3-rev305-1.23.0")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+
+    implementation("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava")
+
+    implementation("com.google.api-client:google-api-client-android:1.23.0") {
+        exclude("org.apache.httpcomponents")
+    }
+
+    implementation("pub.devrel:easypermissions:3.0.0")
+
 }
