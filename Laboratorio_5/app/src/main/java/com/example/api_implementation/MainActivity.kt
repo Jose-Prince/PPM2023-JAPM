@@ -2,7 +2,7 @@ package com.example.api_implementation
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.view.View
+import android.os.Environment
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -26,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,6 +35,10 @@ import com.example.api_implementation.ui.theme.API_ImplementationTheme
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
+import java.io.File
+import java.io.FileOutputStream
+import java.util.*
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +71,8 @@ fun Screen() {
     var text by remember { mutableStateOf("")}
     var qrBitmap by remember { mutableStateOf<Bitmap?>(null)}
 
+    val context = LocalContext.current
+
     val density = LocalDensity.current.density
     val qrCodeSize = (100 * density).toInt()
 
@@ -89,13 +96,21 @@ fun Screen() {
         }
 
         if (qrBitmap != null) {
-            Image(
-                bitmap = qrBitmap!!.asImageBitmap(),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(200.dp)
-                    .background(MaterialTheme.colorScheme.primary)
-            )
+            Column (modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally){
+                Image(
+                    bitmap = qrBitmap!!.asImageBitmap(),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(200.dp)
+                        .background(MaterialTheme.colorScheme.primary)
+                )
+                Button(onClick = { saveQRCode(context,qrBitmap!!) }) {
+                    Text(text = "Guardar")
+                }
+            }
+
         }
 
     }
@@ -118,6 +133,25 @@ fun generateQRCode(text: String, size: Int): Bitmap? {
     } catch (e: Exception){
         e.printStackTrace()
         null
+    }
+}
+
+fun saveQRCode(context: android.content.Context, bitmap: Bitmap) {
+    val directory = File(Environment.getExternalStorageDirectory(), "API_Implementation")
+    if (!directory.exists()) {
+        directory.mkdirs()
+    }
+
+    val fileName = "QRimage.png"
+
+    val filePath = File(directory, fileName)
+
+    try {
+        val fos = FileOutputStream(filePath)
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,fos)
+        fos.close()
+    } catch (e: Exception) {
+        e.printStackTrace()
     }
 }
 
