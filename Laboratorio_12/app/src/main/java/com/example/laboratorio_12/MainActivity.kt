@@ -48,6 +48,6 @@ fun AdaptativeLayout() {
 @Composable
 fun GreetingPreview() {
     Laboratorio_12Theme {
-
+        AdaptativeLayout()
     }
 }
