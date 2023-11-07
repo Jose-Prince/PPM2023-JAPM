@@ -1,5 +1,6 @@
 package com.example.laboratorio_12
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,11 +29,14 @@ fun screenTablet(countries: List<Country>) {
         Spacer(modifier = Modifier.size(60.dp))
         LazyVerticalGrid(columns = GridCells.Fixed(3)) {
             items(countries) { item ->
-                Text(text = item.name,
-                    textAlign = TextAlign.Center,
-                    fontSize = 35.sp,
-                    fontStyle = FontStyle.Italic
-                )
+                Column (modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally){
+                    Image(painter = painterResource(id = item.image), contentDescription = null, modifier = Modifier.size(150.dp))
+                    Text(text = item.name,
+                        textAlign = TextAlign.Center,
+                        fontSize = 35.sp,
+                        fontStyle = FontStyle.Italic
+                    )
+                }
             }
         }
         Spacer(modifier = Modifier.size(60.dp))
@@ -45,5 +50,5 @@ fun screenTablet(countries: List<Country>) {
 @Preview(showBackground = true)
 @Composable
 fun PrevTablet() {
-    screenTablet(countries = listOf("Venezuela", "Guatemala","Uruguay","Paraguay"))
+    //screenTablet(countries = listOf("Venezuela", "Guatemala","Uruguay","Paraguay"))
 }
