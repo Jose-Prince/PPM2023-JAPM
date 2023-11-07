@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.laboratorio_12.ui.theme.Laboratorio_12Theme
 
@@ -30,7 +31,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Screen() {
+fun AdaptativeLayout() {
+    val screenSize = LocalConfiguration.current.screenWidthDp
+
+    if (screenSize < 600) {
+        screenCellphone()
+    } else {
+        screenTablet()
+    }
+}
+
+@Composable
+fun screenCellphone() {
+
+}
+
+fun screenTablet() {
 
 }
 
@@ -38,6 +54,6 @@ fun Screen() {
 @Composable
 fun GreetingPreview() {
     Laboratorio_12Theme {
-        Screen()
+
     }
 }
