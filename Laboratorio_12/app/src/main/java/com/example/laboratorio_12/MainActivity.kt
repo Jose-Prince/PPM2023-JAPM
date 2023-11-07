@@ -34,7 +34,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AdaptativeLayout() {
-    val listCountries = listOf("Argentina", "Venezuela", "Guatemala", "Alemania", "Japón", "Estados Unidos","Emiratos Árabes", "España", "Chile")
+    val listCountries = listOf(Country("Argentina", R.drawable.argentina), Country("Venezuela", R.drawable.venezuela), Country("Guatemala", R.drawable.guatemala),
+        Country("Alemania", R.drawable.alemania), Country("Japón", R.drawable.jap_n), Country("Estados Unidos", R.drawable.estados_unidos),
+        Country("Emiratos Árabes", R.drawable.emiratos__rabes), Country("España", R.drawable.espa_a), Country("Chile", R.drawable.chile))
     val screenSize = LocalConfiguration.current.screenWidthDp
 
     if (screenSize < 600) {
