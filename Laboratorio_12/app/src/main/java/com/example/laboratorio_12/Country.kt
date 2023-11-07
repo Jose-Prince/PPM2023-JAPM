@@ -1,5 +1,3 @@
 package com.example.laboratorio_12
-
-import androidx.compose.ui.graphics.painter.Painter
-
+//Objeto que tiene el nombre del país y su imagen
 data class Country (val name : String, val image : Int)

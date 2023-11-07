@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
+//Función que adapta el layout
 @Composable
 fun AdaptativeLayout() {
     val listCountries = listOf(Country("Argentina", R.drawable.argentina), Country("Venezuela", R.drawable.venezuela), Country("Guatemala", R.drawable.guatemala),
