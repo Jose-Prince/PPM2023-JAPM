@@ -3,11 +3,13 @@ package com.example.laboratorio_12
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    AdaptativeLayout()
                 }
             }
         }
@@ -32,22 +34,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AdaptativeLayout() {
+    val listCountries = listOf("Argentina", "Venezuela", "Guatemala", "Alemania", "Japón", "Estados Unidos","Emiratos Árabes", "España", "Chile")
     val screenSize = LocalConfiguration.current.screenWidthDp
 
     if (screenSize < 600) {
-        screenCellphone()
+        screenCellphone(listCountries)
     } else {
-        screenTablet()
+        screenTablet(listCountries)
     }
-}
-
-@Composable
-fun screenCellphone() {
-
-}
-
-fun screenTablet() {
-
 }
 
 @Preview(showBackground = true)
